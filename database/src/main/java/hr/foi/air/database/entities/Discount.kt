@@ -1,9 +1,11 @@
 package hr.foi.air.database.entities
 
 import androidx.room.*
+import hr.foi.air.database.converters.DateConverter
 import java.util.*
 
 @Entity(tableName = "discounts")
+@TypeConverters(DateConverter::class)
 data class Discount (
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
