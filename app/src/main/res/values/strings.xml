@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Discount Locator</string>
+    <string name="show_data">Show Data</string>
+    <string name="no_data">No data!</string>
 </resources>
