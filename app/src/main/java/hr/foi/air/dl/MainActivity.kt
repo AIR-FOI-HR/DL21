@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        //val btnShowData = findViewById<Button>(R.id.btn_show_data)
+        binding.btnShowData.setOnClickListener{
+        }
     }
 
     fun mockSomeData()
