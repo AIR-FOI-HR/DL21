@@ -3,6 +3,7 @@ package hr.foi.air.ws
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.squareup.okhttp.OkHttpClient
+import hr.foi.air.database.entities.Store
 import hr.foi.air.ws.responses.MyWebserviceResponse
 import retrofit.*
 
@@ -38,7 +39,21 @@ class MyWebserviceCaller {
                     response: Response<MyWebserviceResponse>?,
                     retrofit: Retrofit?
                 ) {
-                    t?.printStackTrace()
+                    try{
+                        if (response != null) {
+                            if(response.isSuccess()){
+                                println("Got stores... Processing...")
+                                val gson : Gson = Gson()
+                                val storeItems: Array<Store>? = gson.fromJson(response.body().items, Array<Store>::class.java)
+
+                                if (storeItems != null) {
+                                    //data obtained stend it to handler
+                                }
+                            }
+                        }
+                    }catch (ex: Exception){
+                        ex.printStackTrace()
+                    }
                 }
             })
         }
