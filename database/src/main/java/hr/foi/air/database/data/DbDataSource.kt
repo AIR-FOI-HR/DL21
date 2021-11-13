@@ -4,7 +4,7 @@ import android.content.Context
 import hr.foi.air.database.DAO
 import hr.foi.air.database.MainDatabase
 
-class DataRepository(context: Context) {
+class DbDataSource(context: Context) {
     private var dao: DAO? = null
 
     init {
