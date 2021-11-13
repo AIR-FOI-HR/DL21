@@ -3,8 +3,8 @@ package hr.foi.air.ws
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.squareup.okhttp.OkHttpClient
-import hr.foi.air.database.entities.Discount
-import hr.foi.air.database.entities.Store
+import hr.foi.air.core.entities.Discount
+import hr.foi.air.core.entities.Store
 import hr.foi.air.ws.handlers.MyWebserviceHandler
 import hr.foi.air.ws.responses.MyWebserviceResponse
 import retrofit.*

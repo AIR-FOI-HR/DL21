@@ -41,7 +41,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //modules
-    implementation project (path: ':database')
+    implementation project (path: ':core')
 
     //retrofit https://gist.github.com/zstapic
     implementation 'com.squareup.retrofit:retrofit:2.0.0-beta2'
