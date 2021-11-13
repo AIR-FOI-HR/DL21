@@ -42,4 +42,10 @@ dependencies {
 
     //modules
     implementation project (path: ':database')
+
+    //retrofit https://gist.github.com/zstapic
+    implementation 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    implementation 'com.squareup.okhttp:okhttp:2.7.0'
+    implementation 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
