@@ -21,10 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         //val btnShowData = findViewById<Button>(R.id.btn_show_data)
         binding.btnShowData.setOnClickListener{
-            displayData(binding)
+            //displayData(binding)
         }
     }
 
+    /*
     fun displayData(binding: ActivityMainBinding)
     {
         //Unos podataka u bazu, ako je potrebno
@@ -51,4 +52,5 @@ class MainActivity : AppCompatActivity() {
         if (!discounts.isEmpty())
             binding.emptyMessage.isVisible = false
     }
+    */
 }
