@@ -3,9 +3,7 @@ package hr.foi.air.dl
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isVisible
 import hr.foi.air.database.data.DbDataSource
