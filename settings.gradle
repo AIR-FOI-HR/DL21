@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "Discount Locator"
 include ':app'
 include ':database'
+include ':ws'
