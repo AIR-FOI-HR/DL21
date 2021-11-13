@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import hr.foi.air.database.data.DbDataSource
 import hr.foi.air.database.data.MockData
 import hr.foi.air.dl.databinding.ActivityMainBinding
+import hr.foi.air.dl.repositry.DataRepository
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,36 +22,34 @@ class MainActivity : AppCompatActivity() {
 
         //val btnShowData = findViewById<Button>(R.id.btn_show_data)
         binding.btnShowData.setOnClickListener{
-            //displayData(binding)
+            displayData(binding)
         }
     }
 
-    /*
+
     fun displayData(binding: ActivityMainBinding)
     {
-        //Unos podataka u bazu, ako je potrebno
-        MockData.mockData(this)
+        var repository = DataRepository()
 
-        var discounts : List<String>? = DbDataSource(this).getDiscountNames()
+        var discounts : List<String>? = repository.getDiscountNames(this)
 
         //Prikaz podataka na zaslovnu
         if (discounts != null) {
             binding.lstDiscounts.adapter =
                 ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, discounts)
+
+            //Dodatne mogućnosti prikaza
+            for (disc in discounts!!) {
+                //privremeni ispis na zaslon
+                Toast.makeText(this, disc, Toast.LENGTH_LONG).show()
+
+                //ispis u log
+                Log.d("AIR", disc)
+            }
+
+            //hiding empty message
+            if (!discounts.isEmpty())
+                binding.emptyMessage.isVisible = false
         }
-
-        //Dodatne mogućnosti prikaza
-        for (disc in discounts!!) {
-            //privremeni ispis na zaslon
-            Toast.makeText(this, disc, Toast.LENGTH_LONG).show()
-
-            //ispis u log
-            Log.d("AIR", disc)
-        }
-
-        //hiding empty message
-        if (!discounts.isEmpty())
-            binding.emptyMessage.isVisible = false
     }
-    */
 }

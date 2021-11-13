@@ -17,7 +17,7 @@ class WsDataSource : DataSource {
 
     override fun loadData(dataSourceListener: DataSourceListener, context: Context) {
 
-        this.listener = listener
+        this.listener = dataSourceListener
 
         val storeCaller: MyWebserviceCaller = MyWebserviceCaller()
         val discountCaller: MyWebserviceCaller = MyWebserviceCaller()

@@ -10,7 +10,11 @@ import hr.foi.air.database.MainDatabase
 class DbDataSource : DataSource {
     private var dao: DAO? = null
 
+
     override fun loadData(dataSourceListener: DataSourceListener, context: Context) {
+        //Unos podataka u bazu, ako je potrebno
+        MockData.mockData(context)
+
         dao = MainDatabase.getInstance(context).getDao()
 
         var stores : List<hr.foi.air.database.entities.Store>? = dao?.getAllStores()
