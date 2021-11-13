@@ -27,5 +27,20 @@ class MyWebserviceCaller {
         if (serviceCaller != null) {
             call = serviceCaller.getAllStores(method)
         }
+
+        if(call != null){
+            call.enqueue(object: Callback<MyWebserviceResponse> {
+                override fun onFailure(t: Throwable?) {
+                    t?.printStackTrace()
+                }
+
+                override fun onResponse(
+                    response: Response<MyWebserviceResponse>?,
+                    retrofit: Retrofit?
+                ) {
+                    t?.printStackTrace()
+                }
+            })
+        }
     }
 }
