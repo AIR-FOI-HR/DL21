@@ -62,7 +62,7 @@ class MyWebserviceCaller {
         }
     }
 
-    fun getAllDiscount(method: String, dataArrivedHandler: MyWebserviceHandler)
+    fun getAllDiscounts(method: String, dataArrivedHandler: MyWebserviceHandler)
     {
         val serviceCaller: MyWebservice? = retrofit?.create(MyWebservice::class.java)
         var call: Call<MyWebserviceResponse>? = null
