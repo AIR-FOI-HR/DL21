@@ -35,38 +35,5 @@ object MockData {
                 dao?.insertDiscounts(tuna)
             }
         }
-
-
-        val acmesStore: Store = Store()
-        acmesStore.name = "ACMEs store"
-        val acmedStore: Store = Store()
-        acmedStore.name = "ACMEd store"
-        dao?.insertStores(acmedStore)
-        dao?.insertStores(acmesStore)
-
-        println("KIA")
-        var whatever = dao?.getAllStores()
-        println(whatever?.get(0)?.id)
-        println(whatever?.get(1)?.id)
-        println(whatever?.get(2)?.id)
-
-        val tuna: Discount = Discount()
-        tuna.name = "Three for two"
-        tuna.discountValue = 33
-        tuna.storeId = acmesStore.id
-        dao?.insertDiscounts(tuna)
-
-        var whatever2 = dao?.getAllDiscounts()
-        println("AIK")
-        println(whatever2?.get(0)?.id)
-        println(whatever2?.get(0)?.storeId)
-        println(whatever2?.get(1)?.id)
-        println(whatever2?.get(3)?.id)
-        println(whatever2?.get(3)?.storeId)
-
-
-
-
-
     }
 }

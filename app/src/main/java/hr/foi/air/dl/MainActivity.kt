@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
         binding.btnShowData.setOnClickListener{
             displayData(binding)
         }
-
-        MockData.mockData(applicationContext);
     }
 
 
