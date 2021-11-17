@@ -10,5 +10,4 @@ class Store(): Store()
 {
     @PrimaryKey(autoGenerate = true)
     @Ignore override var id : Int? = null;
-
 }
