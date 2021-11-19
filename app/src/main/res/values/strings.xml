@@ -6,4 +6,7 @@
     <string name="store_image">Image represents the store logo or other store image.</string>
     <string name="store_name">Examplary Store Name</string>
     <string name="store_desc">This is an examplary store description which is expected to be multiline. Thus I we are using a very long string descrption to see how the overal behavour of the vard view will be with long descriptions.</string>
+
+    <string name="discount_name">Examplary Discount</string>
+    <string name="discount_desc">This is an examplary discount description which is expected to be multiline. Thus I we are using a very long string descrption to see how the overal behavour of the vard view will be with long descriptions.</string>
 </resources>
