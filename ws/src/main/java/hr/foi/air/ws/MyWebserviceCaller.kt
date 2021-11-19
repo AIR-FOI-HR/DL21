@@ -1,5 +1,6 @@
 package hr.foi.air.ws
 
+import com.google.gson.FieldNamingStrategy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.squareup.okhttp.OkHttpClient
@@ -82,10 +83,14 @@ class MyWebserviceCaller {
                 ) {
                     try{
                         if (response != null) {
+                            val customPolicy =
+                                FieldNamingStrategy { f -> f.name.replace("discountValue", "discount") }
+
                             if(response.isSuccess()){
                                 println("Got discounts... Processing...")
                                 val gson : Gson = GsonBuilder()
                                     .setDateFormat("yyyy-MM-dd")
+                                    .setFieldNamingStrategy(customPolicy)
                                     .create()
                                 val discountItems: Array<Discount>? = gson.fromJson(response.body().items, Array<Discount>::class.java)
 
