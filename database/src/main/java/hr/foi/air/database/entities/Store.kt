@@ -1,15 +1,13 @@
 package hr.foi.air.database.entities
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import hr.foi.air.core.entities.Store
 
-@Entity(tableName = "stores")
-data class Store(
+@Entity(tableName = "stores", primaryKeys = ["id"])
+class Store(): Store()
+{
     @PrimaryKey(autoGenerate = true)
-    var id : Int? = null,
-    var name : String = "",
-    var description : String = "",
-    var imgUrl: String = "",
-    var latitude: Long = 0,
-    var longitude: Long = 0
-)
+    @Ignore override var id : Int? = null;
+}

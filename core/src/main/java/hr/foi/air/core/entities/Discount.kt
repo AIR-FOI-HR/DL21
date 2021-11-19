@@ -2,9 +2,9 @@ package hr.foi.air.core.entities
 
 import java.util.*
 
-data class Discount (
-    var id: Int? = null,
-    var storeId: Int? = null,
+open class Discount (
+    open var id: Int? = null,
+    open var storeId: Int? = null,
     var name: String = "",
     var description: String = "",
     var discountValue: Int = 0,
