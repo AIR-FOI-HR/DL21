@@ -49,4 +49,10 @@ dependencies {
     implementation project (path: ':database')
     implementation project (path: ':ws')
     implementation project (path: ':core')
+
+    //expandable recyclerview and cardview
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'com.bignerdranch.android:expandablerecyclerview:3.0.0-RC1'
 }
