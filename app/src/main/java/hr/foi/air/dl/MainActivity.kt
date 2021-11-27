@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         showMainFragment()
-        //displayData(binding)
+        loadDataToFragment()
     }
 
     private fun showMainFragment()
@@ -37,28 +37,9 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-
-    /*fun displayData(binding: ActivityMainBinding)
+    fun loadDataToFragment()
     {
-        var repository = DataRepository()
-        var context = this
-
-        repository.loadData(this, object : LoadDataListener {
-            override fun onDataLoaded(stores: List<Store>?, discounts: List<Discount>?) {
-                if (stores != null) {
-                    val parentList : ArrayList<StoreParent> = ArrayList()
-                    for (s in stores)
-                        parentList.add(StoreParent(s, discounts!!))
-                    
-                    //prikaz podataka
-                    binding.mainRecycler.adapter = StoreRecyclerAdapter(context, parentList)
-                    binding.mainRecycler.layoutManager = LinearLayoutManager(context)
-
-                    //hiding empty message
-                    if (!stores.isEmpty())
-                        binding.emptyMessage.isVisible = false
-                }
-            }
-        } )
-    }*/
+        if (currentFragment != null)
+            DataRepository().loadData(this, currentFragment!!)
+    }
 }
