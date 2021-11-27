@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        displayData(binding)
+        //displayData(binding)
     }
 
 
-    fun displayData(binding: ActivityMainBinding)
+    /*fun displayData(binding: ActivityMainBinding)
     {
         var repository = DataRepository()
         var context = this
@@ -47,5 +47,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         } )
-    }
+    }*/
 }
