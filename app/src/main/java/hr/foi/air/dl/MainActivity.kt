@@ -2,9 +2,13 @@ package hr.foi.air.dl
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.navigation.NavigationView
 import hr.foi.air.core.entities.Discount
 import hr.foi.air.core.entities.Store
 import hr.foi.air.dl.databinding.ActivityMainBinding
@@ -14,7 +18,7 @@ import hr.foi.air.dl.recyclerview.StoreRecyclerAdapter
 import hr.foi.air.dl.repository.DataRepository
 import hr.foi.air.dl.repository.LoadDataListener
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var currentFragment : ListViewFragment? = null
     private lateinit var binding : ActivityMainBinding
 
@@ -42,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         )
         binding.drawerLayout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
+
+        binding.navView.setNavigationItemSelectedListener(this)
     }
 
     private fun showMainFragment()
@@ -56,5 +62,15 @@ class MainActivity : AppCompatActivity() {
     {
         if (currentFragment != null)
             DataRepository().loadData(this, currentFragment!!)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_about -> Log.d("AirAir", "Menu item About")
+            else -> TODO()
+        }
+
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 }
