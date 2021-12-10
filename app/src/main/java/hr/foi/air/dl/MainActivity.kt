@@ -8,11 +8,17 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.navigation.NavigationView
 import hr.foi.air.core.entities.Discount
 import hr.foi.air.core.entities.Store
 import hr.foi.air.dl.databinding.ActivityMainBinding
 import hr.foi.air.dl.fragments.ListViewFragment
+import hr.foi.air.dl.managers.DataPresenterManager
 import hr.foi.air.dl.recyclerview.StoreParent
 import hr.foi.air.dl.recyclerview.StoreRecyclerAdapter
 import hr.foi.air.dl.repository.DataRepository
@@ -31,8 +37,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(view)
 
         initializeLayout()
-        showMainFragment()
-        loadDataToFragment()
+        initializeDataPresenterManager()
+        initializeAds()
     }
 
     private fun initializeLayout()
@@ -50,18 +56,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.navView.setNavigationItemSelectedListener(this)
     }
 
-    private fun showMainFragment()
+    private fun initializeDataPresenterManager()
     {
-        currentFragment = ListViewFragment()
-        supportFragmentManager.beginTransaction()
-            .replace(binding.layoutMain.contentMain.mainFragment.id, currentFragment!!)
-            .commit()
-    }
-
-    fun loadDataToFragment()
-    {
-        if (currentFragment != null)
-            DataRepository().loadData(this, currentFragment!!)
+        DataPresenterManager
+            .getInstance()
+            .setDependancies(this, binding.navView, binding.drawerLayout)
+            .initializeDataPresenters()
+            .showMainDataPresenter()
     }
 
     override fun onBackPressed() {
@@ -73,11 +74,36 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.menu_about -> Log.d("AirAir", "Menu item About")
-            else -> TODO()
+            //R.id.menu_about -> Log.d("AirAir", "Menu item About")
+            //else -> TODO()
         }
 
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private var mInterstitialAd: InterstitialAd? = null
+
+    fun initializeAds()
+    {
+        MobileAds.initialize(this) {}
+
+        var adRequest = AdRequest.Builder().build()
+        var context = this
+
+        //release: Map View Interstitial ca-app-pub-6991391774275847/7461615137
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+
+                mInterstitialAd = interstitialAd
+                mInterstitialAd?.show(context)
+            }
+        })
+
     }
 }
